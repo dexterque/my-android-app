@@ -1,16 +1,14 @@
 package com.example.myapplication;
 
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,4 +26,37 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
+    /**
+     * 创建底部菜单
+     * @param menu
+     * @return
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    /**
+     * 点击菜单响应事件
+     * @param item
+     * @return
+     */
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.add_item:
+                Toast.makeText(MainActivity.this, "You clicked Add", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.remove_item:
+                Toast.makeText(MainActivity.this, "You clicked Remove", Toast.LENGTH_SHORT).show();
+                break;
+            default:
+        }
+        return false;
+    }
+
+
 }
